@@ -2,6 +2,7 @@
    <h2>这是子组件</h2>
    {{ title }}
    <hr>
+   <button @click="title='只改变了'">修改props</button>
    {{ msg }}
 </template>
 
