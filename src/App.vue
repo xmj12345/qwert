@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>这是组件视图内容</h1>
+    <CommonHead />
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CommonHead from "./components/commonHead.vue";
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      msg: "你好呀",
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    CommonHead,
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+/* @import url('./assets/style.css'); */
+h1 {
+  color: red;
+}
+:deep h1 {
+  color: blue;
 }
 </style>
