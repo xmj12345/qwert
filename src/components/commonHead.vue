@@ -1,6 +1,6 @@
 <template>
         <h1>这是父组件</h1>
-        <CommonChild :title="title" msg="这是静态的值"/>
+        <CommonChild :title="title" msg="为什么传不上去"/>
 </template>
 
 <script>
