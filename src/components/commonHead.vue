@@ -14,6 +14,6 @@ import CommonChild from './CommonChild.vue';
     }
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
     
 </style>
