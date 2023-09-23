@@ -1,14 +1,15 @@
 <template>
-        <CommonChild/>
-        <CommonChild2/>
+        <CommonChild ref="child"/>
+        <button ref="btn">按钮</button>
 </template>
 <script>
 import CommonChild from './CommonChild.vue';
-import CommonChild2 from './CommonChild2.vue'
     export default {
+        mounted () {
+            console.log(this.$refs)
+        },
         components:{
             CommonChild,
-            CommonChild2
         }
     }
 </script>
