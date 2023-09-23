@@ -2,7 +2,7 @@
     <div>
         <ul>
             <li v-for="cate in cates" :key="cate.id">
-                <img :src="cate.icon" width="100" alt="">
+            <img :src="cate.icon" width="100" alt="">
             <p>{{ cate.name }}</p>
             </li>
 
