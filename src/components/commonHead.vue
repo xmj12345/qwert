@@ -1,42 +1,68 @@
 <template>
-    <div>
-        <ul>
-            <li v-for="cate in cates" :key="cate.id">
-            <img :src="cate.icon" width="100" alt="">
-            <p>{{ cate.name }}</p>
-            </li>
-
-        </ul>
+  <div class="swiper banner">
+    <div class="swiper-wrapper">
+      <div
+        class="swiper-slide"
+        v-for="bannerImg in banners"
+        :key="bannerImg.id"
+      >
+        <img :src="bannerImg.picUrl" alt="" />
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import axios from 'axios'
-    export default {
-        data() {
-            return {
-                // 1.在data中定义初始值来接收数据
-                cates:[]
-            }
-        },
-        methods: {
-            // 2. methods中定义方法 发送请求
-            fetchCates() {
-                axios.get('https://api.it120.cc/conner/shop/goods/category/all').then(res=>{
-                    console.log(res)
-                    if(res.data.code === 0){
-                        this.cates = res.data.data
-                    }
-                })
-            }
-        },
-        // 3.在初始化 生命周期钩子中调用方法
-        created () {
-            this.fetchCates()
-        },
-    }
+import "swiper/swiper-bundle.css";
+import Swiper from "swiper";
+import axios from "axios";
+export default {
+  data() {
+    return {
+      swiper: null,
+      banners: [],
+    };
+  },
+  methods: {
+    initSwiper() {
+      let mySwiper = new Swiper(".banner", {
+        autoplay: true, //可选选项，自动滑动
+        loop: true,
+      });
+      this.swiper = mySwiper;
+    },
+    fetchBanners() {
+      axios.get("https://api.it120.cc/conner/banner/list").then((res) => {
+        console.log(res);
+        if (res.data.code === 0) {
+          this.banners = res.data.data;
+          this.$nextTick(() => {
+            this.initSwiper();
+          });
+        }
+      });
+    },
+  },
+  mounted() {
+    this.fetchBanners();
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.banner {
+  width: 600px;
+  height: 400px;
+  border: 1px solid black;
+  margin: 0 auto;
+  .swiper-slide {
+    width: 600px;
+    height: 400px;
+    background-color: skyblue;
+  }
+}
+img {
+  width: 600px;
+  height: 400px;
+}
 </style>
