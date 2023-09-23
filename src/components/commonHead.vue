@@ -1,19 +1,42 @@
 <template>
-        <CommonChild ref="child"/>
-        <button ref="btn">按钮</button>
+    <div>
+        <ul>
+            <li v-for="cate in cates" :key="cate.id">
+                <img :src="cate.icon" width="100" alt="">
+            <p>{{ cate.name }}</p>
+            </li>
+
+        </ul>
+    </div>
 </template>
+
 <script>
-import CommonChild from './CommonChild.vue';
+import axios from 'axios'
     export default {
-        mounted () {
-            console.log(this.$refs)
+        data() {
+            return {
+                // 1.在data中定义初始值来接收数据
+                cates:[]
+            }
         },
-        components:{
-            CommonChild,
-        }
+        methods: {
+            // 2. methods中定义方法 发送请求
+            fetchCates() {
+                axios.get('https://api.it120.cc/conner/shop/goods/category/all').then(res=>{
+                    console.log(res)
+                    if(res.data.code === 0){
+                        this.cates = res.data.data
+                    }
+                })
+            }
+        },
+        // 3.在初始化 生命周期钩子中调用方法
+        created () {
+            this.fetchCates()
+        },
     }
 </script>
 
-<style  scoped>
-    
+<style lang="scss" scoped>
+
 </style>
