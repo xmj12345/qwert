@@ -6,6 +6,7 @@
 <script>
     export default {
         data() {
+            
             return {
                 msg: '子组件的数据'
             }
