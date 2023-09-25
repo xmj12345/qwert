@@ -1,5 +1,5 @@
 export default {
-    data() {
+    data(){
         return {
             msg: '混入对象上的数据'
         }
