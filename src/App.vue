@@ -1,7 +1,5 @@
 <template>
-
     <CommonHead/>
-
 </template>
 
 <script>
