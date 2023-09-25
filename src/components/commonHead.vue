@@ -1,33 +1,27 @@
 <template>
     <div>
-        <input type="text" v-model="inputText">
+        <h1>父组件</h1>
+        <label for="CommonChild1">组件1</label>
+        <input type="radio" value="CommonChild1" id="CommonChild1" v-model="componentName">
+        <label for="CommonChild2">组件2</label>
+        <input type="radio" value="CommonChild2" id="CommonChild2" v-model="componentName">
+        <hr>
+        <component :is="componentName"></component>
     </div>
 </template>
 
 <script>
+    import CommonChild1 from './CommonChild1.vue';
+    import CommonChild2 from './CommonChild2.vue';
     export default {
         data() {
             return {
-                inputText: '',
-                timer :null
+                componentName: 'CommonChild1'
             }
         },
-        mounted () {
-            console.log('组件初始化');
-        },
-        unmounted(){
-            console.log('组件卸载')
-        },
-        activated(){
-            let timer = setInterval(() => {
-                console.log(111)
-            }, 1000);
-            this.timer = timer
-            console.log('组件激活或再次使用----activated')
-        },
-        deactivated(){
-            console.log('组件停用')
-            clearInterval(this.timer)
+        components:{
+            CommonChild1,
+            CommonChild2
         }
     }
 </script>
