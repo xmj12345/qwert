@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>组件</h2>
+        <input type="text" v-model="inputText">
     </div>
 </template>
 
@@ -8,25 +8,30 @@
     export default {
         data() {
             return {
-                time: null
+                inputText: '',
+                timer :null
             }
         },
         mounted () {
-            let time = setInterval(()=>{
-                console.log('定时器出发了')
-            },1000);
-            this.time = time
-            window.onscroll = function(){
-                console.log('滚动了')
-            }
+            console.log('组件初始化');
         },
-        beforeUnmount(){
-            clearInterval(this.time)
-            window.onscroll = null
+        unmounted(){
+            console.log('组件卸载')
+        },
+        activated(){
+            let timer = setInterval(() => {
+                console.log(111)
+            }, 1000);
+            this.timer = timer
+            console.log('组件激活或再次使用----activated')
+        },
+        deactivated(){
+            console.log('组件停用')
+            clearInterval(this.timer)
         }
     }
 </script>
 
-<style  scoped>
+<style lang="scss" scoped>
 
 </style>

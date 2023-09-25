@@ -1,5 +1,8 @@
 <template>
-  <CommonHead v-if="isShow"/>
+  <keep-alive>
+    <CommonHead v-if="isShow"/>
+  </keep-alive>
+  
   <button @click="isShow=!isShow">{{ isShow? '隐藏':'显示' }}</button>
 </template>
 
