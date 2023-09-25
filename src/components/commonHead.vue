@@ -10,7 +10,6 @@
           <button>这也是传给默认的-->{{ data.d }}</button>
         </div>
       </template>
-
       <template #footer="data">
         <button v-for="item in data.arr" :key="item">{{ item }}</button>
         <mark>这是传给尾部的-->{{ data.c }}</mark>
