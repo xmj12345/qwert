@@ -1,12 +1,12 @@
 <template>
     <div>
         <h1>父组件</h1>
-        <label for="CommonChild1">组件1</label>
-        <input type="radio" value="CommonChild1" id="CommonChild1" v-model="componentName">
-        <label for="CommonChild2">组件2</label>
-        <input type="radio" value="CommonChild2" id="CommonChild2" v-model="componentName">
         <hr>
-        <component :is="componentName"></component>
+        <button @click="isShow = !isShow">{{ isShow?'隐藏':'显示' }}</button>
+        <KeepAlive :include="['CommonChild1','CommonChild2']">
+            <component :is="componentName" v-if="isShow"></component>
+        </KeepAlive>
+        
     </div>
 </template>
 
@@ -16,7 +16,8 @@
     export default {
         data() {
             return {
-                componentName: 'CommonChild1'
+                isShow:true,
+                componentName: 'CommonChild2'
             }
         },
         components:{
