@@ -11,7 +11,6 @@
         <img :src="item.pic" alt="">
         <p>{{ item.name }}</p>
         <p>价格： {{ item.minPrice }}</p>
-
       </li>
     </ul>
   </div>
@@ -19,13 +18,11 @@
 
 <script>
 import axios from 'axios'
-let request = axios.create({
-  baseURL:"https://api.it120.cc/conner",
-  timeout:4000,
-  headers:{
-    token:'aaa'
-  }
-})
+
+  axios.defaults.baseURL="https://api.it120.cc/conner",
+  axios.defaults.timeout=4000,
+  axios.defaults.headers.token='aaa'
+
   export default {
     data() {
       return {
@@ -35,7 +32,7 @@ let request = axios.create({
     },
     methods: {
       fetchCates() {
-        request.get(
+        axios.get(
           '/shop/goods/category/all',{
             params:{
             page:1,
@@ -50,7 +47,7 @@ let request = axios.create({
         })
       },
       fetchItem(){
-        request.post("/shop/goods/list/v2",{
+        axios.post("/shop/goods/list/v2",{
           a:10,
           b:20
         }).then((res) => {
