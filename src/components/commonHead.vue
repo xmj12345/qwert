@@ -24,19 +24,46 @@ export default {
   background-color: skyblue;
   margin: 20px auto;
 }
-/* 定义入场初始状态 */
-.ani1-enter-from{
-  transform: translateX(-500px) rotate(360deg) scale(0.1);
-  opacity: 0;
+/* 定义入场动画 */
+@keyframes enter {
+  0% {
+    transform: translateX(-500px) rotate(360deg) scale(0.1);
+    opacity: 0;
+    background-color: #1bb84d;
+  }
+  50% {
+    transform: translateX(-250px) rotate(360deg) scale(0.5);
+    opacity: 0.5;
+    background-color: #2c0781;
+  }
+  100% {
+    transform: translateX(0) rotate(0) scale(1);
+    opacity: 1;
+    background-color: skyblue;
+  }
 }
-  /* 定义出厂最终状态 */
-.ani1-leave-to{
-  transform: translateY(500px) rotate(360deg) scale(0.1);
-  opacity: 0;
+/* 定义出场动画 */
+@keyframes leave {
+  0% {
+    transform: translateY(0) rotate(0) scale(1);
+    opacity: 1;
+    background-color: #1bb84d;
+  }
+  50% {
+    transform: translateY(250px) rotate(360deg) scale(0.5);
+    opacity: 0.5;
+    background-color: #2c0781;
+  }
+  100% {
+    transform: translateY(500px) rotate(360deg) scale(0.1);
+    opacity: 0;
+    background-color: skyblue;
+  }
 }
-.ani1-enter-active,
-.ani1-leave-active{
-  transition: all 1s;
+.ani1-enter-active {
+  animation: enter 1s;
 }
-
+.ani1-leave-active {
+  animation: leave 1s;
+}
 </style>
