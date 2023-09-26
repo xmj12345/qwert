@@ -1,5 +1,5 @@
 <template>
-    <CommonHead class="tou" style="width: 200px;height: 200px;background: pink;"/>
+    <CommonHead/>
 </template>
 
 <script>
