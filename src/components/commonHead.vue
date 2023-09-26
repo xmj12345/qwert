@@ -1,50 +1,42 @@
 <template>
-  <div class="a">
-    <div class="b">
-      <button @click="showModal">显示modal</button>
-      <Teleport to="body">
-        <div class="mask" v-if="isShow" @click.self="hideModal">
-        <div class="container">这是内容</div>
-      </div>
-      </Teleport>
-    </div>
-  </div>
+  <button @click="isShow = !isShow">
+    {{ isShow ? "点击隐藏" : "点击显示" }}
+  </button>
+  <Transition name="ani1">
+    <div class="box" v-if="isShow"></div>
+  </Transition>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      isShow: false,
+      isShow: true,
     };
-  },
-  methods: {
-    showModal() {
-      this.isShow = true;
-    },
-    hideModal() {
-      this.isShow = false;
-    },
   },
 };
 </script>
 
 <style scoped>
-.mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 10000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: skyblue;
+  margin: 20px auto;
 }
-.container {
-  width: 40%;
-  height: 40%;
-  background-color: #fff;
+/* 定义入场初始状态 */
+.ani1-enter-from{
+  transform: translateX(-500px) rotate(360deg) scale(0.1);
+  opacity: 0;
 }
+  /* 定义出厂最终状态 */
+.ani1-leave-to{
+  transform: translateY(500px) rotate(360deg) scale(0.1);
+  opacity: 0;
+}
+.ani1-enter-active,
+.ani1-leave-active{
+  transition: all 1s;
+}
+
 </style>
