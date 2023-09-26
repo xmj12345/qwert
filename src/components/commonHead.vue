@@ -1,9 +1,12 @@
 <template>
-  <button @click="isShow = !isShow">
-    {{ isShow ? "点击隐藏" : "点击显示" }}
+  <button @click="index++">
+    {{ index % 3 }}
   </button>
-  <Transition name="ani1">
-    <div class="box" v-if="isShow"></div>
+  <!-- out-in 先出后入 -->
+  <Transition name="ani1" mode="out-in">
+    <div class="box1" v-if="index % 3 ===0"></div>
+    <div class="box2" v-else-if="index % 3 ===1"></div>
+    <div class="box3" v-else></div>
   </Transition>
 </template>
 
@@ -11,59 +14,40 @@
 export default {
   data() {
     return {
-      isShow: true,
+      index:0
     };
   },
 };
 </script>
 
 <style scoped>
-.box {
+.box1 {
   width: 200px;
   height: 200px;
   background-color: skyblue;
-  margin: 20px auto;
 }
-/* 定义入场动画 */
-@keyframes enter {
-  0% {
-    transform: translateX(-500px) rotate(360deg) scale(0.1);
-    opacity: 0;
-    background-color: #1bb84d;
-  }
-  50% {
-    transform: translateX(-250px) rotate(360deg) scale(0.5);
-    opacity: 0.5;
-    background-color: #2c0781;
-  }
-  100% {
-    transform: translateX(0) rotate(0) scale(1);
-    opacity: 1;
-    background-color: skyblue;
-  }
+.box2 {
+  width: 200px;
+  height: 200px;
+  background-color:palegoldenrod;
 }
-/* 定义出场动画 */
-@keyframes leave {
-  0% {
-    transform: translateY(0) rotate(0) scale(1);
-    opacity: 1;
-    background-color: #1bb84d;
-  }
-  50% {
-    transform: translateY(250px) rotate(360deg) scale(0.5);
-    opacity: 0.5;
-    background-color: #2c0781;
-  }
-  100% {
-    transform: translateY(500px) rotate(360deg) scale(0.1);
-    opacity: 0;
-    background-color: skyblue;
-  }
+.box3 {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
 }
-.ani1-enter-active {
-  animation: enter 1s;
+/* 定义入场初始状态 */
+.ani1-enter-from {
+  transform: translateX(-500px) rotate(360deg) scale(0.1);
+  opacity: 0;
 }
+/* 定义出场最终状态 */
+.ani1-leave-to {
+  transform: translateY(500px) rotate(360deg) scale(0.1);
+  opacity: 0;
+}
+.ani1-enter-active,
 .ani1-leave-active {
-  animation: leave 1s;
+  transition: all 1s;
 }
 </style>
