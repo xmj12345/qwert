@@ -6,40 +6,63 @@
         <p>{{ cate.name }}</p>
       </li>
     </ul>
+    <ul>
+    <li v-for="item in items" :key="item.id">
+        <img :src="item.pic" alt="">
+        <p>{{ item.name }}</p>
+        <p>价格： {{ item.minPrice }}</p>
+
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+let request = axios.create({
+  baseURL:"https://api.it120.cc/conner",
+  timeout:4000,
+  headers:{
+    token:'aaa'
+  }
+})
   export default {
     data() {
       return {
-        cates: []
+        cates: [],
+        items:[]
       }
     },
     methods: {
       fetchCates() {
-        axios({
-          url:'https://api.it120.cc/conner/shop/goods/category/all',
-          method:'get',
-          params:{
+        request.get(
+          '/shop/goods/category/all',{
+            params:{
             page:1,
             pageNum:10
           },
-          headers:{
-            token:'aaaaaa'
           }
-        }).then(res=>{
-          console.log(res)
+        ).then(res=>{
           if(res.data.code===0){
             this.cates = res.data.data
           }
 
         })
+      },
+      fetchItem(){
+        request.post("/shop/goods/list/v2",{
+          a:10,
+          b:20
+        }).then((res) => {
+          if (res.data.code === 0) {
+            this.items = res.data.data.result;
+          }
+        });
       }
     },
     created () {
       this.fetchCates();
+      this.fetchItem()
     },
   }
 </script>
