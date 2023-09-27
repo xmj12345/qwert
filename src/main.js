@@ -1,8 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import axios from './utils/util'
 let app = createApp(App)
-// 添加全局属性和方法
-app.config.globalProperties.$aaa = 2
-app.config.globalProperties.$request = axios
+// 自定义全局指令
+app.directive('focus',{
+    mounted(el,binding){
+       el.focus()
+    }
+})  
 app.mount('#app')
