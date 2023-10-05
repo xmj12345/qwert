@@ -4,6 +4,7 @@ import HomeVue from '@/views/Home.vue'
 import NewVue from '@/views/New.vue'
 import AboutVue from '@/views/About.vue'
 import NotFoundVue from '@/views/NotFound.vue'
+import NewSonVue from "@/views/NewSon.vue";
 let routes = [
     // 重定向
     {
@@ -15,8 +16,15 @@ let routes = [
         component:HomeVue
     },
     {
-        path:'/new/:id', // 相当于定义了一个动态参数
-        component:NewVue
+        path:'/new',
+        children:[
+            {
+                path:'/new/newSon',
+                component:NewSonVue
+            }
+        ],
+        component:NewVue,
+     
     },
     {
         path:'/about',

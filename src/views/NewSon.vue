@@ -1,5 +1,5 @@
 <template>
-    <h1>新闻子路由</h1>
+    <h2>新闻子路由</h2>
 </template>
 
 <script>

@@ -1,5 +1,7 @@
 <template>
     <h1>新闻页</h1>
+    <RouterLink to="/new/newSon">新闻子路由</RouterLink>
+    <RouterView/>
 </template>
 
 <script>
