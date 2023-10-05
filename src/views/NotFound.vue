@@ -1,13 +1,10 @@
 <template>
-    <h1>新闻页</h1>
+    <h1>404了</h1>
 </template>
 
 <script>
-
     export default {
-        mounted () {
-            console.log(this.$route);
-        },
+        
     }
 </script>
 

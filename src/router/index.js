@@ -3,18 +3,28 @@ import { createRouter,createWebHashHistory } from "vue-router";
 import HomeVue from '@/views/Home.vue'
 import NewVue from '@/views/New.vue'
 import AboutVue from '@/views/About.vue'
+import NotFoundVue from '@/views/NotFound.vue'
 let routes = [
+    // 重定向
     {
         path:'/',
+        redirect:'/home'
+    },
+    {
+        path:'/home',
         component:HomeVue
     },
     {
-        path:'/new',
+        path:'/new/:id', // 相当于定义了一个动态参数
         component:NewVue
     },
     {
         path:'/about',
         component:AboutVue
+    },
+    // notfound路由
+    { path: '/:pathMatch(.*)*', 
+     component: NotFoundVue 
     },
 ]
 let router = createRouter({
