@@ -1,9 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import VueVideoPlayer from '@videojs-player/vue'
-import 'video.js/dist/video-js.css'
-import loading from './plugins/loading'
+import router from './router'
 let app = createApp(App)
-app.use(VueVideoPlayer)
-app.use(loading)
+app.use(router)
 app.mount('#app')

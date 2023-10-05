@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <h1>这是全局组件</h1>
-    </div>
+    <h1>首页</h1>
 </template>
 
 <script>
