@@ -13,10 +13,12 @@ let routes = [
     },
     {
         path:'/home',
+        name:'home',
         component:HomeVue
     },
     {
         path:'/new',
+        name:'new',
         children:[
             // 子路由重定向
             {
@@ -25,6 +27,7 @@ let routes = [
             },
             {
                 path:'/new/newSon',
+                name:'newSon',
                 component:NewSonVue
             }
         ],
@@ -33,6 +36,7 @@ let routes = [
     },
     {
         path:'/about',
+        name:'about',
         component:AboutVue
     },
     // notfound路由
