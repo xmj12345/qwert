@@ -4,7 +4,6 @@ import HomeVue from '@/views/Home.vue'
 import NewVue from '@/views/New.vue'
 import AboutVue from '@/views/About.vue'
 import NotFoundVue from '@/views/NotFound.vue'
-import NewSonVue from "@/views/NewSon.vue";
 let routes = [
     // 重定向
     {
@@ -19,18 +18,6 @@ let routes = [
     {
         path:'/new',
         name:'new',
-        children:[
-            // 子路由重定向
-            {
-                path:'/new',
-                redirect:'/new/newSon'
-            },
-            {
-                path:'/new/newSon',
-                name:'newSon',
-                component:NewSonVue
-            }
-        ],
         component:NewVue,
      
     },

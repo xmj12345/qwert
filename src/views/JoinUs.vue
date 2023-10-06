@@ -1,5 +1,5 @@
 <template>
-    <h2>新闻子路由</h2>
+    <h1>我是动态添加</h1>
 </template>
 
 <script>
