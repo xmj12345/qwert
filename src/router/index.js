@@ -18,6 +18,11 @@ let routes = [
     {
         path:'/new',
         children:[
+            // 子路由重定向
+            {
+                path:'/new',
+                redirect:'/new/newSon'
+            },
             {
                 path:'/new/newSon',
                 component:NewSonVue
