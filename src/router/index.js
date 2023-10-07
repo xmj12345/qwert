@@ -1,5 +1,5 @@
 // 创建路由实例
-import { createRouter,createWebHashHistory } from "vue-router";
+import { createRouter,createWebHashHistory,createWebHistory } from "vue-router";
 import HomeVue from '@/views/Home.vue'
 import NewVue from '@/views/New.vue'
 import AboutVue from '@/views/About.vue'
@@ -33,7 +33,7 @@ let routes = [
 ]
 let router = createRouter({
     // 路由模式  history模式(createWebHistory)
-    history:createWebHashHistory(),
+    history:createWebHistory(),
     // 定义路由规则
     routes
 })
