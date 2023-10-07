@@ -3,19 +3,7 @@
 </template>
 
 <script>
-    export default {
-        beforeRouteEnter(to,from,next){
-            if(confirm('年满18周岁了吗')){
-                next()
-            }
-            // next(vm=>{
-            //     console.log(vm)
-            // })
-        },
-        beforeRouteLeave(to,from){
-           return confirm('确定要离开吗')
-        }
-    }
+    export default {}
 </script>
 
 <style lang="scss" scoped>

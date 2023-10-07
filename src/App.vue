@@ -12,9 +12,7 @@ export default {
       this.$router.push('/home')
     },
     enterNew(){
-      this.$router.push({
-        path:'/new',
-      })
+      this.$router.push('/new')
     },
     enterAbout(){
       this.$router.replace('/about')

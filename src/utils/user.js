@@ -1,0 +1,1 @@
+export let isLogin = ()=> !!localStorage.getItem('token')
