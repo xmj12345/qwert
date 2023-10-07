@@ -15,11 +15,17 @@ let routes = [
     {
         path:'/home',
         name:'home',
+        meta: {
+            transition: 'slideLeft'
+          },
         component:HomeVue
     },
     {
         path:'/new',
         name:'new',
+        meta: {
+            transition: 'slideBottom'
+          },
         component:NewVue,
      
     },
@@ -27,7 +33,8 @@ let routes = [
         path:'/about',
         name:'about',
         meta:{
-            needLogin:true
+            needLogin:true,
+            transition: 'slideRight'
         },
         component:AboutVue
     },
