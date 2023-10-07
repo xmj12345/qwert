@@ -16,7 +16,7 @@ let routes = [
         component:HomeVue
     },
     {
-        path:'/new',
+        path:'/new/:id',
         name:'new',
         component:NewVue,
      
@@ -24,9 +24,6 @@ let routes = [
     {
         path:'/about',
         name:'about',
-        beforeEnter:(to,from)=>{
-            return false
-        },
         component:AboutVue
    
     },
