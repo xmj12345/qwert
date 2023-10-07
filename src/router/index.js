@@ -26,6 +26,9 @@ let routes = [
     {
         path:'/about',
         name:'about',
+        meta:{
+            needLogin:true
+        },
         component:AboutVue
     },
     {
@@ -45,21 +48,19 @@ let router = createRouter({
     routes
 })
 router.beforeEach((to,from,next)=>{
-    // 必须放行的路由 定义路由白名单
-    let pass = ['/login','/register']
-    if(pass.includes(to.path)){
-        next()
-    }else if(to.path === '/login' && isLogin()){
+    if(to.path === '/login' && isLogin()){
         next('/home')
-    }else{
+    }else if(to.meta.needLogin){
         if(isLogin()){
             next()
         }else{
             next({
-                path:"/login",
+                path:'/login',
                 query:{redirect:to.path}
             })
         }
+    }else{
+        next()
     }
 })
 // vue实例 需要使用这个插件
