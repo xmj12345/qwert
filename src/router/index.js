@@ -24,7 +24,11 @@ let routes = [
     {
         path:'/about',
         name:'about',
+        beforeEnter:(to,from)=>{
+            return false
+        },
         component:AboutVue
+   
     },
     // notfound路由
     { path: '/:pathMatch(.*)*', 
@@ -37,10 +41,6 @@ let router = createRouter({
     // 定义路由规则
     routes
 })
-// 全局后置守卫
-router.afterEach((to,from)=>{
-    console.log(to,'to')
-    console.log(from,'from')
-})
+
 // vue实例 需要使用这个插件
 export default router
