@@ -32,7 +32,7 @@ let routes = [
     },
 ]
 let router = createRouter({
-    // 路由模式  history模式(createWebHistory)
+    // 路由模式（createWebHashHistory）  history模式(createWebHistory)
     history:createWebHistory(),
     // 定义路由规则
     routes
