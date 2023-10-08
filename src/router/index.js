@@ -1,10 +1,10 @@
 // 创建路由实例
 import { createRouter,createWebHashHistory,createWebHistory } from "vue-router";
-import HomeVue from '@/views/Home.vue'
-import NewVue from '@/views/New.vue'
-import AboutVue from '@/views/About.vue'
-import NotFoundVue from '@/views/NotFound.vue'
-import LoginVue from '@/views/Login.vue'
+// import HomeVue from '@/views/Home.vue'
+// import NewVue from '@/views/New.vue'
+// import AboutVue from '@/views/About.vue'
+// import NotFoundVue from '@/views/NotFound.vue'
+// import LoginVue from '@/views/Login.vue'
 import {isLogin} from  '@/utils/user'
 let routes = [
     // 重定向
@@ -18,7 +18,7 @@ let routes = [
         meta: {
             transition: 'slideLeft'
           },
-        component:HomeVue
+        component:()=>import('@/views/Home.vue')
     },
     {
         path:'/new',
@@ -26,7 +26,7 @@ let routes = [
         meta: {
             transition: 'slideBottom'
           },
-        component:NewVue,
+        component:()=>import('@/views/New.vue'),
      
     },
     {
@@ -36,16 +36,16 @@ let routes = [
             needLogin:true,
             transition: 'slideRight'
         },
-        component:AboutVue
+        component:()=>import('@/views/About.vue')
     },
     {
         path:"/login",
         name:'login',
-        component:LoginVue
+        component:()=>import('@/views/Login.vue')
     },
     // notfound路由
     { path: '/:pathMatch(.*)*', 
-     component: NotFoundVue 
+     component: ()=>import('@/views/NotFound.vue') 
     },
 ]
 let router = createRouter({
