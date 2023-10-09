@@ -4,10 +4,15 @@
     {{ $store.state.count }}
     <hr>
     {{ $store.getters.doubleCount }}
+    <ul>
+        <li v-for="cate in $store.state.cates" :key="cate.id">
+            <p>{{ cate.name }}</p>
+            <img :src="cate.icon" width='100' alt="">
+        </li>
+    </ul>
 </template>
 
 <script>
-
     export default {
         methods: {
             addCount() {
@@ -15,7 +20,11 @@
             }
         },
         mounted () {
-            console.log(this.$store);;
+            console.log(this.$store);
+            this.$store.dispatch('FETCH_CATES',{
+                pageNo:1,
+                pageSize:10
+            })
         },
     }
 </script>
