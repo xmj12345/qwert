@@ -3,7 +3,7 @@
     <button @click="ADD_COUNT(10)">count+</button>
     {{ count }}
     <hr>
-    {{ $store.getters.doubleCount }}
+    {{doubleCount }}
     <ul>
         <li v-for="cate in cates" :key="cate.id">
             <p>{{ cate.name }}</p>
@@ -13,20 +13,18 @@
 </template>
 
 <script>
-import { mapState,mapMutations } from 'vuex';
+import { mapState,mapMutations,mapActions,mapGetters } from 'vuex';
     export default {
         methods: {
-            ...mapMutations(['ADD_COUNT'])
+            ...mapMutations(['ADD_COUNT']),
+            ...mapActions(['FETCH_CATES'])
         },
         mounted () {
-            console.log(this.$store);
-            this.$store.dispatch('FETCH_CATES',{
-                pageNo:1,
-                pageSize:10
-            })
+            this.FETCH_CATES({page:1,pageSize:10});
         },
         computed:{
-            ...mapState(['count','cates'])
+            ...mapState(['cates','count']),
+            ...mapGetters(['doubleCount'])
         }
         
     }
