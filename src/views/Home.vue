@@ -1,11 +1,11 @@
 <template>
     <h1>首页</h1>
-    <button @click="addCount">count+</button>
-    {{ $store.state.count }}
+    <button @click="ADD_COUNT(10)">count+</button>
+    {{ count }}
     <hr>
     {{ $store.getters.doubleCount }}
     <ul>
-        <li v-for="cate in $store.state.cates" :key="cate.id">
+        <li v-for="cate in cates" :key="cate.id">
             <p>{{ cate.name }}</p>
             <img :src="cate.icon" width='100' alt="">
         </li>
@@ -13,11 +13,10 @@
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex';
     export default {
         methods: {
-            addCount() {
-                this.$store.commit('ADD_COUNT',5)
-            }
+            ...mapMutations(['ADD_COUNT'])
         },
         mounted () {
             console.log(this.$store);
@@ -26,6 +25,10 @@
                 pageSize:10
             })
         },
+        computed:{
+            ...mapState(['count','cates'])
+        }
+        
     }
 </script>
 
